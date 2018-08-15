@@ -1,19 +1,16 @@
-'use strict'
-
-module.exports = listItem
-
-var u = require('unist-builder')
-var wrap = require('../wrap')
-var all = require('../all')
+import * as u from 'unist-builder'
+import wrap from '../wrap'
+import all from '../all'
+import {H} from '..'
 
 /* Transform a list-item. */
-function listItem(h, node, parent) {
-  var children = node.children
-  var head = children[0]
-  var props = {}
-  var single = false
-  var result
-  var container
+export default function listItem(h: H, node, parent) {
+  const children = node.children
+  const head = children[0]
+  const props: {className?: any} = {}
+  let single = false
+  let result
+  let container
 
   if (
     (!parent || !parent.loose) &&

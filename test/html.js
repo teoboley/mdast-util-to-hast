@@ -2,7 +2,7 @@
 
 var test = require('tape')
 var u = require('unist-builder')
-var to = require('..')
+var to = require('../build')
 
 test('HTML', function(t) {
   t.equal(to(u('html', '<mike></mike>')), null, 'should ignore `html`')

@@ -32,6 +32,9 @@
     "xtend": "^4.0.1"
   },
   "devDependencies": {
+    "@types/mdurl": "^1.0.1",
+    "@types/trim": "^0.1.0",
+    "@types/xtend": "^4.0.2",
     "browserify": "^16.0.0",
     "nyc": "^12.0.0",
     "prettier": "^1.13.3",
@@ -42,10 +45,9 @@
     "xo": "^0.21.0"
   },
   "scripts": {
-    "format": "remark . -qfo && prettier --write '**/*.js' && xo --fix",
-    "build-bundle": "browserify index.js -s mdastUtilToHAST > mdast-util-to-hast.js",
-    "build-mangle": "browserify index.js -s mdastUtilToHAST -p tinyify > mdast-util-to-hast.min.js",
-    "build": "npm run build-bundle && npm run build-mangle",
+    "format": "remark . -qfo && prettier --write '**/*.ts' && xo --fix",
+    "build:ts": "tsc",
+    "build": "npm run build:ts",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test/index.js",
     "test": "npm run format && npm run build && npm run test-coverage"

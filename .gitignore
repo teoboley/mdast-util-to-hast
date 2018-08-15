@@ -3,6 +3,7 @@
 .nyc_output/
 coverage/
 node_modules/
+build/
 mdast-util-to-hast.js
 mdast-util-to-hast.min.js
 yarn.lock

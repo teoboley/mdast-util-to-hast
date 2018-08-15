@@ -1,18 +1,15 @@
-'use strict'
-
-module.exports = generateFootnotes
-
-var thematicBreak = require('./handlers/thematic-break')
-var list = require('./handlers/list')
-var wrap = require('./wrap')
+import thematicBreak from './handlers/thematic-break'
+import list from './handlers/list'
+import wrap from './wrap'
+import {H} from '.'
 
 /* Transform all footnote definitions, if any. */
-function generateFootnotes(h) {
-  var footnotes = h.footnotes
-  var length = footnotes.length
-  var index = -1
-  var listItems = []
-  var def
+export default function generateFootnotes(h: H) {
+  const footnotes = h.footnotes
+  const length = footnotes.length
+  let index = -1
+  const listItems: any[] = []
+  let def
 
   if (!length) {
     return null

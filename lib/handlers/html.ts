@@ -1,11 +1,8 @@
-'use strict'
-
-module.exports = html
-
-var u = require('unist-builder')
+import * as u from 'unist-builder'
+import {H} from '..'
 
 /* Return either a `raw` node, in dangerous mode, or
  * nothing. */
-function html(h, node) {
+export default function html(h: H, node) {
   return h.dangerous ? h.augment(node, u('raw', node.value)) : null
 }

@@ -1,17 +1,14 @@
-'use strict'
-
-module.exports = revert
-
-var u = require('unist-builder')
-var all = require('./all')
+import * as u from 'unist-builder'
+import all from './all'
+import {H} from '.'
 
 /* Return the content of a reference without definition as markdown. */
-function revert(h, node) {
-  var subtype = node.referenceType
-  var suffix = ']'
-  var contents
-  var head
-  var tail
+export default function revert(h: H, node) {
+  const subtype = node.referenceType
+  let suffix = ']'
+  let contents
+  let head
+  let tail
 
   if (subtype === 'collapsed') {
     suffix += '[]'

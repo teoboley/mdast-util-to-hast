@@ -1,14 +1,11 @@
-'use strict'
-
-module.exports = imageReference
-
-var normalize = require('mdurl/encode')
-var revert = require('../revert')
+import * as normalize from 'mdurl/encode'
+import revert from '../revert'
+import {H} from '..'
 
 /* Transform a reference to an image. */
-function imageReference(h, node) {
-  var def = h.definition(node.identifier)
-  var props
+export default function imageReference(h: H, node) {
+  const def = h.definition(node.identifier)
+  let props
 
   if (!def) {
     return revert(h, node)

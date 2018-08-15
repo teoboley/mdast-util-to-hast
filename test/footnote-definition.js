@@ -2,7 +2,7 @@
 
 var test = require('tape')
 var u = require('unist-builder')
-var to = require('..')
+var to = require('../build')
 
 test('FootnoteDefinition', function(t) {
   t.equal(

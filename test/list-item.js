@@ -2,7 +2,7 @@
 
 var test = require('tape')
 var u = require('unist-builder')
-var to = require('..')
+var to = require('../build')
 
 /* Tests. */
 test('ListItem', function(t) {

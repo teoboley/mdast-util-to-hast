@@ -1,16 +1,13 @@
-'use strict'
-
-module.exports = footnote
-
-var footnoteReference = require('./footnote-reference')
+import footnoteReference from './footnote-reference'
+import {H} from '..'
 
 /* Transform an inline footnote. */
-function footnote(h, node) {
-  var identifiers = []
-  var identifier = 1
-  var footnotes = h.footnotes
-  var length = footnotes.length
-  var index = -1
+export default function footnote(h: H, node) {
+  const identifiers: any[] = []
+  let identifier: any = 1
+  const footnotes = h.footnotes
+  const length = footnotes.length
+  let index = -1
 
   while (++index < length) {
     identifiers[index] = footnotes[index].identifier

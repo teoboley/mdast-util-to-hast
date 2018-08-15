@@ -1,18 +1,15 @@
-'use strict'
-
-module.exports = all
-
-var trim = require('trim')
-var one = require('./one')
+import * as trim from 'trim'
+import one from './one'
+import {H} from '.'
 
 /* Transform the children of `parent`. */
-function all(h, parent) {
-  var nodes = parent.children || []
-  var length = nodes.length
-  var values = []
-  var index = -1
-  var result
-  var head
+export default function all(h: H, parent) {
+  const nodes = parent.children || []
+  const length = nodes.length
+  let values = []
+  let index = -1
+  let result
+  let head
 
   while (++index < length) {
     result = one(h, nodes[index], parent)

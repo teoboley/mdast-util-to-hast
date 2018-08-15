@@ -1,15 +1,11 @@
-'use strict'
-
-module.exports = wrap
-
-var u = require('unist-builder')
+import * as u from 'unist-builder'
 
 /* Wrap `nodes` with newlines between each entry.
  * Optionally adds newlines at the start and end. */
-function wrap(nodes, loose) {
-  var result = []
-  var index = -1
-  var length = nodes.length
+export default function wrap(nodes, loose?) {
+  const result: any[] = []
+  let index = -1
+  const length = nodes.length
 
   if (loose) {
     result.push(u('text', '\n'))

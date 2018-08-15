@@ -1,14 +1,11 @@
-'use strict'
+import * as u from 'unist-builder'
+import all from './all'
+import {H} from '.'
 
-module.exports = one
-
-var u = require('unist-builder')
-var all = require('./all')
-
-var own = {}.hasOwnProperty
+const own = {}.hasOwnProperty
 
 /* Transform an unknown node. */
-function unknown(h, node) {
+function unknown(h: H, node) {
   if (text(node)) {
     return h.augment(node, u('text', node.value))
   }
@@ -17,9 +14,9 @@ function unknown(h, node) {
 }
 
 /* Visit a node. */
-function one(h, node, parent) {
-  var type = node && node.type
-  var fn = own.call(h.handlers, type) ? h.handlers[type] : null
+export default function one(h: H, node, parent?) {
+  const type = node && node.type
+  const fn = own.call(h.handlers, type) ? h.handlers[type] : null
 
   /* Fail on non-nodes. */
   if (!type) {
@@ -31,7 +28,7 @@ function one(h, node, parent) {
 
 /* Check if the node should be renderered a text node. */
 function text(node) {
-  var data = node.data || {}
+  const data = node.data || {}
 
   if (
     own.call(data, 'hName') ||

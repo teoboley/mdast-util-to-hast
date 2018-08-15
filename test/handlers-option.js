@@ -2,8 +2,8 @@
 
 var test = require('tape')
 var u = require('unist-builder')
-var to = require('..')
-var all = require('../lib/all')
+var to = require('../build')
+var all = require('../build/lib/all').default
 
 test('handlers option', function(t) {
   var handlers = {

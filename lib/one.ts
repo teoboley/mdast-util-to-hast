@@ -1,11 +1,14 @@
+import { Element } from './../ast-types/hast';
+import { TextNode } from './../ast-types/mdast';
+import { Node, Parent } from './../ast-types/unist';
 import * as u from 'unist-builder'
 import all from './all'
-import {Transformer, HASTNode} from '.'
+import {Transformer} from '.'
 
 const own = {}.hasOwnProperty
 
 /* Transform an unknown node. */
-function unknown(h: Transformer, node: Node | Parent): HASTNode {
+function unknown(h: Transformer, node: Node | Parent): Element {
   if (text(node)) {
     return h.augment(node, u('text', (node as TextNode).value))
   }

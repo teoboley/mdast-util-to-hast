@@ -1,9 +1,11 @@
+import { Element } from './../../ast-types/hast';
+import { Link } from './../../ast-types/mdast';
 import * as normalize from 'mdurl/encode'
 import all from '../all'
-import {Transformer, HASTNode} from '..'
+import {Transformer} from '..'
 
 /* Transform a link. */
-export default function link(h: Transformer, node: Link): HASTNode {
+export default function link(h: Transformer, node: Link): Element {
   const props: any = {href: normalize(node.url)}
 
   if (node.title !== null && node.title !== undefined) {

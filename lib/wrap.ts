@@ -1,4 +1,5 @@
 import * as u from 'unist-builder'
+import { Node } from '../ast-types/unist';
 
 /* Wrap `nodes` with newlines between each entry.
  * Optionally adds newlines at the start and end. */

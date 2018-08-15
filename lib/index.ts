@@ -1,3 +1,6 @@
+import { Element } from './../ast-types/hast';
+import { Definition, FootnoteDefinition } from './../ast-types/mdast';
+import { Parent, Node, Position } from './../ast-types/unist';
 import * as xtend from 'xtend'
 import * as u from 'unist-builder'
 import * as visit from 'unist-util-visit'
@@ -8,14 +11,12 @@ import one from './one'
 import footer from './footer'
 import * as handlers from './handlers'
 
-export type HASTNode = any;
-
 export type Transformer = {
-  (node: Parent | Node | Position | null | undefined, tagName: string, props?, children?): HASTNode
+  (node: Parent | Node | Position | null | undefined, tagName: string, props?, children?): Element
   dangerous: boolean
   definition: (identifier: string) => Definition
   footnotes: FootnoteDefinition[];
-  augment: (left: Node, right: HASTNode) => HASTNode
+  augment: (left: Node, right: Element) => Element
   handlers: any
 }
 
@@ -40,7 +41,7 @@ function factory(tree, options): Transformer {
 
   /* Finalise the created `right`, a HAST node, from
    * `left`, an MDAST node.   */
-  function augment(left: Node, right: HASTNode): HASTNode {
+  function augment(left: Node, right: Element): Element {
     let data
     let ctx
 
@@ -74,7 +75,7 @@ function factory(tree, options): Transformer {
   }
 
   /* Create an element for a `node`. */
-  function h(node: Parent | Node | Position | null | undefined, tagName: string, props?, children?: Node[]): HASTNode {
+  function h(node: Parent | Node | Position | null | undefined, tagName: string, props?, children?: Node[]): Element {
     if (
       (children === undefined || children === null) &&
       typeof props === 'object' &&
@@ -94,7 +95,7 @@ function factory(tree, options): Transformer {
 }
 
 /* Transform `tree`, which is an MDAST node, to a HAST node. */
-export default function toHAST(tree: Node, options): HASTNode {
+export default function toHAST(tree: Node, options): Element {
   const h = factory(tree, options)
   const node = one(h, tree)
   const footnotes = footer(h)

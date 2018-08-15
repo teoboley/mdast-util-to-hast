@@ -1,10 +1,12 @@
+import { Element } from './../ast-types/hast';
+import { ListItem } from './../ast-types/mdast';
 import thematicBreak from './handlers/thematic-break'
 import list from './handlers/list'
 import wrap from './wrap'
-import {Transformer, HASTNode} from '.'
+import {Transformer} from '.'
 
 /* Transform all footnote definitions, if any. */
-export default function generateFootnotes(h: Transformer): HASTNode {
+export default function generateFootnotes(h: Transformer): Element | null {
   const footnotes = h.footnotes
   const length = footnotes.length
   let index = -1

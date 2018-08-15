@@ -1,9 +1,11 @@
+import { Element } from './../../ast-types/hast';
+import { List } from './../../ast-types/mdast';
 import wrap from '../wrap'
 import all from '../all'
-import {Transformer, HASTNode} from '..'
+import {Transformer} from '..'
 
 /* Transform a list. */
-export default function list(h: Transformer, node: List): HASTNode {
+export default function list(h: Transformer, node: List): Element {
   const props: any = {}
   const name = node.ordered ? 'ol' : 'ul'
 

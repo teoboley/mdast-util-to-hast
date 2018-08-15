@@ -1,8 +1,10 @@
+import { Element } from './../../ast-types/hast';
+import { Footnote } from './../../ast-types/mdast';
 import footnoteReference from './footnote-reference'
-import {Transformer, HASTNode} from '..'
+import {Transformer} from '..'
 
 /* Transform an inline footnote. */
-export default function footnote(h: Transformer, node: Footnote): HASTNode {
+export default function footnote(h: Transformer, node: Footnote): Element {
   const identifiers: string[] = []
   let identifier = '1';
   const footnotes = h.footnotes

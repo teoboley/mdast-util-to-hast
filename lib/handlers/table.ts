@@ -1,10 +1,12 @@
+import { Element } from './../../ast-types/hast';
 import * as position from 'unist-util-position'
 import wrap from '../wrap'
 import all from '../all'
-import {Transformer, HASTNode} from '..'
+import {Transformer} from '..'
+import { Table } from '../../ast-types/mdast';
 
 /* Transform a table. */
-export default function table(h: Transformer, node: Table): HASTNode {
+export default function table(h: Transformer, node: Table): Element {
   const rows = node.children
   let index = rows.length
   const align = node.align

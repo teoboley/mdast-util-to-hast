@@ -1,11 +1,12 @@
+import { Element } from './../ast-types/hast';
+import { Node, Parent } from './../ast-types/unist';
 import * as trim from 'trim'
 import one from './one'
-import {Transformer, HASTNode} from '.'
+import {Transformer} from '.'
 
 /* Transform the children of `parent`. */
-export function all(h: Transformer, parent: Node): HASTNode;
-export function all(h: Transformer, parent: Parent): HASTNode[];
-export default function all(h: Transformer, parent: Node | Parent): HASTNode | HASTNode[] {
+export function all(h: Transformer, parent: Parent): Element[];
+export default function all(h: Transformer, parent: Node | Parent): Element[] {
   const nodes = (parent as Parent).children || []
   const length = nodes.length
   let values = []

@@ -1,11 +1,11 @@
+import { Element } from './../ast-types/hast';
+import { LinkReference, ImageReference } from './../ast-types/mdast';
 import * as u from 'unist-builder'
 import all from './all'
 import {Transformer} from '.'
 
 /* Return the content of a reference without definition as markdown. */
-export function revert(h: Transformer, node: LinkReference): Link;
-export function revert(h: Transformer, node: ImageReference): Image;
-export default function revert(h: Transformer, node: LinkReference | ImageReference): Link | Image {
+export default function revert(h: Transformer, node: LinkReference | ImageReference): Element | Element {
   const subtype = node.referenceType
   let suffix = ']'
   let contents

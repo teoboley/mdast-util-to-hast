@@ -1,9 +1,11 @@
+import { Element } from './../../ast-types/hast';
+import { ImageReference } from './../../ast-types/mdast';
 import * as normalize from 'mdurl/encode'
 import revert from '../revert'
-import {Transformer, HASTNode} from '..'
+import {Transformer} from '..'
 
 /* Transform a reference to an image. */
-export default function imageReference(h: Transformer, node: ImageReference): HASTNode {
+export default function imageReference(h: Transformer, node: ImageReference): Element {
   const def = h.definition(node.identifier)
   let props
 

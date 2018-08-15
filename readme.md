@@ -27,7 +27,7 @@ var inspect = require('unist-util-inspect')
 var unified = require('unified')
 var parse = require('remark-parse')
 var vfile = require('to-vfile')
-var toHAST = require('mdast-util-to-hast')
+var toHAST = require('mdast-util-to-hast').default
 
 var tree = unified()
   .use(parse)

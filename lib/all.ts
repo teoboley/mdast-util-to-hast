@@ -3,6 +3,8 @@ import one from './one'
 import {Transformer, HASTNode} from '.'
 
 /* Transform the children of `parent`. */
+export function all(h: Transformer, parent: Node): HASTNode;
+export function all(h: Transformer, parent: Parent): HASTNode[];
 export default function all(h: Transformer, parent: Node | Parent): HASTNode | HASTNode[] {
   const nodes = (parent as Parent).children || []
   const length = nodes.length

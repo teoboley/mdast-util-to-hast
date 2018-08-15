@@ -3,8 +3,8 @@ import {Transformer, HASTNode} from '..'
 
 /* Transform an inline footnote. */
 export default function footnote(h: Transformer, node: Footnote): HASTNode {
-  const identifiers: any[] = []
-  let identifier: any = 1
+  const identifiers: string[] = []
+  let identifier = '1';
   const footnotes = h.footnotes
   const length = footnotes.length
   let index = -1
@@ -14,7 +14,7 @@ export default function footnote(h: Transformer, node: Footnote): HASTNode {
   }
 
   while (identifiers.indexOf(String(identifier)) !== -1) {
-    identifier++
+    (identifier as any)++
   }
 
   identifier = String(identifier)

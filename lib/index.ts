@@ -13,9 +13,9 @@ export type HASTNode = any;
 export type Transformer = {
   (node: Parent | Node | Position | null | undefined, tagName: string, props?, children?): HASTNode
   dangerous: boolean
-  definition: (identifier: any) => any
-  footnotes: any[]
-  augment: (left, right) => any
+  definition: (identifier: string) => Definition
+  footnotes: FootnoteDefinition[];
+  augment: (left: Node, right: HASTNode) => HASTNode
   handlers: any
 }
 
@@ -24,7 +24,7 @@ function factory(tree, options): Transformer {
   const settings = options || {}
   const dangerous = settings.allowDangerousHTML
 
-  const footnotes: Footnote[] = []
+  const footnotes: FootnoteDefinition[] = []
 
   visit(tree, 'footnoteDefinition', definition => {
     footnotes.push(definition)
@@ -40,7 +40,7 @@ function factory(tree, options): Transformer {
 
   /* Finalise the created `right`, a HAST node, from
    * `left`, an MDAST node.   */
-  function augment(left: Node, right) {
+  function augment(left: Node, right: HASTNode): HASTNode {
     let data
     let ctx
 

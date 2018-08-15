@@ -60,7 +60,6 @@ enum alignType {
   NULL = null
 }
 
-
 interface TableRow extends Parent<TableCell> {
   type: "tableRow";
 }
@@ -137,7 +136,7 @@ interface Definition extends Node {
   url: string;
 }
 
-interface FootnoteDefinition extends Parent {
+interface FootnoteDefinition extends Parent<Paragraph> {
   type: "footnoteDefinition";
   identifier: string;
 }

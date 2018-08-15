@@ -1,7 +1,7 @@
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a paragraph. */
-export default function paragraph(h: H, node: Paragraph) {
+export default function paragraph(h: Transformer, node: Paragraph): HASTNode {
   return h(node, 'p', all(h, node))
 }

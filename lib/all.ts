@@ -1,9 +1,9 @@
 import * as trim from 'trim'
 import one from './one'
-import {H} from '.'
+import {Transformer, HASTNode} from '.'
 
 /* Transform the children of `parent`. */
-export default function all(h: H, parent: Node | Parent) {
+export default function all(h: Transformer, parent: Node | Parent): HASTNode | HASTNode[] {
   const nodes = (parent as Parent).children || []
   const length = nodes.length
   let values = []

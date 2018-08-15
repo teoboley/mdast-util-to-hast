@@ -1,20 +1,20 @@
 import * as u from 'unist-builder'
 import all from './all'
-import {H} from '.'
+import {Transformer, HASTNode} from '.'
 
 const own = {}.hasOwnProperty
 
 /* Transform an unknown node. */
-function unknown(h: H, node) {
+function unknown(h: Transformer, node: Node | Parent): HASTNode {
   if (text(node)) {
-    return h.augment(node, u('text', node.value))
+    return h.augment(node, u('text', (node as TextNode).value))
   }
 
   return h(node, 'div', all(h, node))
 }
 
 /* Visit a node. */
-export default function one(h: H, node, parent?) {
+export default function one(h: Transformer, node: Node, parent?: Node | Parent) {
   const type = node && node.type
   const fn = own.call(h.handlers, type) ? h.handlers[type] : null
 
@@ -27,7 +27,7 @@ export default function one(h: H, node, parent?) {
 }
 
 /* Check if the node should be renderered a text node. */
-function text(node) {
+function text(node: Node) {
   const data = node.data || {}
 
   if (

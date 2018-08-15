@@ -1,9 +1,9 @@
 import wrap from '../wrap'
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a list. */
-export default function list(h: H, node: List) {
+export default function list(h: Transformer, node: List): HASTNode {
   const props: any = {}
   const name = node.ordered ? 'ol' : 'ul'
 

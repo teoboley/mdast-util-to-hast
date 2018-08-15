@@ -1,10 +1,10 @@
 import * as normalize from 'mdurl/encode'
 import revert from '../revert'
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a reference to a link. */
-export default function linkReference(h: H, node: LinkReference) {
+export default function linkReference(h: Transformer, node: LinkReference): HASTNode {
   const def = h.definition(node.identifier)
 
   if (!def) {

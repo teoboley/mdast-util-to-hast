@@ -2,8 +2,8 @@ import * as u from 'unist-builder'
 
 /* Wrap `nodes` with newlines between each entry.
  * Optionally adds newlines at the start and end. */
-export default function wrap(nodes, loose?) {
-  const result: any[] = []
+export default function wrap(nodes: Node[], loose?: boolean): Node[] {
+  const result: Node[] = []
   let index = -1
   const length = nodes.length
 

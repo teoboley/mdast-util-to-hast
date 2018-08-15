@@ -1,7 +1,7 @@
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform emphasis. */
-export default function emphasis(h: H, node: Emphasis) {
+export default function emphasis(h: Transformer, node: Emphasis): HASTNode {
   return h(node, 'em', all(h, node))
 }

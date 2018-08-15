@@ -1,7 +1,7 @@
 import * as u from 'unist-builder'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform an inline break. */
-export default function hardBreak(h: H, node: Break) {
+export default function hardBreak(h: Transformer, node: Break): HASTNode {
   return [h(node, 'br'), u('text', '\n')]
 }

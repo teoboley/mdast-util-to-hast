@@ -8,8 +8,10 @@ import one from './one'
 import footer from './footer'
 import * as handlers from './handlers'
 
-export type H = {
-  (node: Parent | Node | Position | null | undefined, tagName: string, props?, children?): any
+export type HASTNode = any;
+
+export type Transformer = {
+  (node: Parent | Node | Position | null | undefined, tagName: string, props?, children?): HASTNode
   dangerous: boolean
   definition: (identifier: any) => any
   footnotes: any[]
@@ -18,11 +20,11 @@ export type H = {
 }
 
 /* Factory to transform. */
-function factory(tree, options): H {
+function factory(tree, options): Transformer {
   const settings = options || {}
   const dangerous = settings.allowDangerousHTML
 
-  const footnotes: any[] = []
+  const footnotes: Footnote[] = []
 
   visit(tree, 'footnoteDefinition', definition => {
     footnotes.push(definition)
@@ -38,7 +40,7 @@ function factory(tree, options): H {
 
   /* Finalise the created `right`, a HAST node, from
    * `left`, an MDAST node.   */
-  function augment(left, right) {
+  function augment(left: Node, right) {
     let data
     let ctx
 
@@ -72,7 +74,7 @@ function factory(tree, options): H {
   }
 
   /* Create an element for a `node`. */
-  function h(node: Parent | Node | Position | null | undefined, tagName: string, props?, children?) {
+  function h(node: Parent | Node | Position | null | undefined, tagName: string, props?, children?: Node[]): HASTNode {
     if (
       (children === undefined || children === null) &&
       typeof props === 'object' &&
@@ -82,7 +84,7 @@ function factory(tree, options): H {
       props = {}
     }
 
-    return augment(node, {
+    return augment((node as Node), {
       type: 'element',
       tagName: tagName,
       properties: props || {},
@@ -92,7 +94,7 @@ function factory(tree, options): H {
 }
 
 /* Transform `tree`, which is an MDAST node, to a HAST node. */
-export default function toHAST(tree, options) {
+export default function toHAST(tree: Node, options): HASTNode {
   const h = factory(tree, options)
   const node = one(h, tree)
   const footnotes = footer(h)

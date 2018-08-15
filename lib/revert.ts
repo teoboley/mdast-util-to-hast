@@ -1,9 +1,11 @@
 import * as u from 'unist-builder'
 import all from './all'
-import {H} from '.'
+import {Transformer} from '.'
 
 /* Return the content of a reference without definition as markdown. */
-export default function revert(h: H, node) {
+export function revert(h: Transformer, node: LinkReference): Link;
+export function revert(h: Transformer, node: ImageReference): Image;
+export default function revert(h: Transformer, node: LinkReference | ImageReference): Link | Image {
   const subtype = node.referenceType
   let suffix = ']'
   let contents

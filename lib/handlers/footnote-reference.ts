@@ -1,8 +1,8 @@
 import * as u from 'unist-builder'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a reference to a footnote. */
-export default function footnoteReference(h: H, node: FootnoteReference) {
+export default function footnoteReference(h: Transformer, node: FootnoteReference): HASTNode {
   const identifier = node.identifier
 
   return h(node.position, 'sup', {id: 'fnref-' + identifier}, [

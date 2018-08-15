@@ -1,10 +1,10 @@
 import * as u from 'unist-builder'
 import wrap from '../wrap'
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a list-item. */
-export default function listItem(h: H, node: ListItem, parent: List) {
+export default function listItem(h: Transformer, node: ListItem, parent: List): HASTNode {
   const children = node.children
   const head = children[0]
   const props: {className?: any} = {}

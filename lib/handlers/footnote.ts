@@ -1,8 +1,8 @@
 import footnoteReference from './footnote-reference'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform an inline footnote. */
-export default function footnote(h: H, node: Footnote) {
+export default function footnote(h: Transformer, node: Footnote): HASTNode {
   const identifiers: any[] = []
   let identifier: any = 1
   const footnotes = h.footnotes

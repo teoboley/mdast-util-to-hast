@@ -35,7 +35,7 @@ interface HTML extends Text {
   type: "html";
 }
 
-interface List extends Parent {
+interface List extends Parent<ListItem | List> {
   type: "list";
   ordered: true | false;
   start?: number;

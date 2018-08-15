@@ -1,10 +1,10 @@
 import thematicBreak from './handlers/thematic-break'
 import list from './handlers/list'
 import wrap from './wrap'
-import {H} from '.'
+import {Transformer, HASTNode} from '.'
 
 /* Transform all footnote definitions, if any. */
-export default function generateFootnotes(h: H) {
+export default function generateFootnotes(h: Transformer): HASTNode {
   const footnotes = h.footnotes
   const length = footnotes.length
   let index = -1

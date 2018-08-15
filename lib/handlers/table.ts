@@ -1,10 +1,10 @@
 import * as position from 'unist-util-position'
 import wrap from '../wrap'
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a table. */
-export default function table(h: H, node: Table) {
+export default function table(h: Transformer, node: Table): HASTNode {
   const rows = node.children
   let index = rows.length
   const align = node.align

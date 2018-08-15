@@ -1,7 +1,7 @@
 import all from '../all'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform deletions. */
-export default function strikethrough(h: H, node: Delete) {
+export default function strikethrough(h: Transformer, node: Delete): HASTNode {
   return h(node, 'del', all(h, node))
 }

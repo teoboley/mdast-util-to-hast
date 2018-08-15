@@ -1,9 +1,9 @@
 import * as normalize from 'mdurl/encode'
 import revert from '../revert'
-import {H} from '..'
+import {Transformer, HASTNode} from '..'
 
 /* Transform a reference to an image. */
-export default function imageReference(h: H, node: ImageReference) {
+export default function imageReference(h: Transformer, node: ImageReference): HASTNode {
   const def = h.definition(node.identifier)
   let props
 

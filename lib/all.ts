@@ -3,8 +3,8 @@ import one from './one'
 import {H} from '.'
 
 /* Transform the children of `parent`. */
-export default function all(h: H, parent) {
-  const nodes = parent.children || []
+export default function all(h: H, parent: Node | Parent) {
+  const nodes = (parent as Parent).children || []
   const length = nodes.length
   let values = []
   let index = -1

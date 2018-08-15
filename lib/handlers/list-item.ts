@@ -4,7 +4,7 @@ import all from '../all'
 import {H} from '..'
 
 /* Transform a list-item. */
-export default function listItem(h: H, node, parent) {
+export default function listItem(h: H, node: ListItem, parent: List) {
   const children = node.children
   const head = children[0]
   const props: {className?: any} = {}

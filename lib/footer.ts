@@ -8,7 +8,7 @@ export default function generateFootnotes(h: H) {
   const footnotes = h.footnotes
   const length = footnotes.length
   let index = -1
-  const listItems: any[] = []
+  const listItems: ListItem[] = []
   let def
 
   if (!length) {

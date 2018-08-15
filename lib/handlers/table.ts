@@ -4,7 +4,7 @@ import all from '../all'
 import {H} from '..'
 
 /* Transform a table. */
-export default function table(h: H, node) {
+export default function table(h: H, node: Table) {
   const rows = node.children
   let index = rows.length
   const align = node.align

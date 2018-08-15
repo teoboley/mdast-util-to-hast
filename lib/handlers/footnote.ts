@@ -2,7 +2,7 @@ import footnoteReference from './footnote-reference'
 import {H} from '..'
 
 /* Transform an inline footnote. */
-export default function footnote(h: H, node) {
+export default function footnote(h: H, node: Footnote) {
   const identifiers: any[] = []
   let identifier: any = 1
   const footnotes = h.footnotes

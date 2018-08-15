@@ -3,7 +3,7 @@ import all from '../all'
 import {H} from '..'
 
 /* Transform a link. */
-export default function link(h: H, node) {
+export default function link(h: H, node: Link) {
   const props: any = {href: normalize(node.url)}
 
   if (node.title !== null && node.title !== undefined) {

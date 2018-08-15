@@ -2,7 +2,7 @@ import * as u from 'unist-builder'
 import {H} from '..'
 
 /* Transform a reference to a footnote. */
-export default function footnoteReference(h: H, node) {
+export default function footnoteReference(h: H, node: FootnoteReference) {
   const identifier = node.identifier
 
   return h(node.position, 'sup', {id: 'fnref-' + identifier}, [

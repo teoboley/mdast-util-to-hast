@@ -3,7 +3,7 @@ import all from '../all'
 import {H} from '..'
 
 /* Transform a list. */
-export default function list(h: H, node) {
+export default function list(h: H, node: List) {
   const props: any = {}
   const name = node.ordered ? 'ol' : 'ul'
 

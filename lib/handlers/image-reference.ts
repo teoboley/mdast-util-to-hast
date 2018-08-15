@@ -3,7 +3,7 @@ import revert from '../revert'
 import {H} from '..'
 
 /* Transform a reference to an image. */
-export default function imageReference(h: H, node) {
+export default function imageReference(h: H, node: ImageReference) {
   const def = h.definition(node.identifier)
   let props
 

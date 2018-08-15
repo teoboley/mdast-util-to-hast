@@ -4,7 +4,7 @@ import all from '../all'
 import {H} from '..'
 
 /* Transform a reference to a link. */
-export default function linkReference(h: H, node) {
+export default function linkReference(h: H, node: LinkReference) {
   const def = h.definition(node.identifier)
 
   if (!def) {

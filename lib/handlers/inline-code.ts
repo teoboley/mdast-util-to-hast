@@ -3,6 +3,6 @@ import * as u from 'unist-builder'
 import {H} from '..'
 
 /* Transform inline code. */
-export default function inlineCode(h: H, node) {
+export default function inlineCode(h: H, node: InlineCode) {
   return h(node, 'code', [u('text', collapse(node.value))])
 }

@@ -9,7 +9,7 @@ import footer from './footer'
 import * as handlers from './handlers'
 
 export type H = {
-  (node, tagName, props?, children?): any
+  (node: Parent | Node | Position | null | undefined, tagName: string, props?, children?): any
   dangerous: boolean
   definition: (identifier: any) => any
   footnotes: any[]
@@ -72,7 +72,7 @@ function factory(tree, options): H {
   }
 
   /* Create an element for a `node`. */
-  function h(node, tagName, props?, children?) {
+  function h(node: Parent | Node | Position | null | undefined, tagName: string, props?, children?) {
     if (
       (children === undefined || children === null) &&
       typeof props === 'object' &&
